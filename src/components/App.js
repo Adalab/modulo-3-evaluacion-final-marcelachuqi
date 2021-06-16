@@ -1,20 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import "../stylesheets/style.css";
 import getDataFromApi from "../services/api";
 import CartoonList from "./CartoonList";
 import Filter from "./Filter";
 import CartoonDetail from "./CartoonDetail";
+import storage from "../services/local-storage";
+import logo from "../image/goback.png";
 
 const App = (props) => {
-  const [cartoons, setCartoons] = useState([]);
-  const [cartoonFilter, setCartoonFilter] = useState("");
+  const [cartoons, setCartoons] = useState(storage.get("cartoons", []));
+  const [cartoonFilter, setCartoonFilter] = useState(
+    storage.get("cartoonFilter", "")
+  );
+
+  console.log(cartoonFilter);
 
   useEffect(() => {
-    getDataFromApi().then((cartoon) => {
-      setCartoons(cartoon);
-    });
+    if (cartoons.length === 0) {
+      getDataFromApi().then((cartoon) => {
+        setCartoons(cartoon);
+      });
+    }
   }, []);
+
+  useEffect(() => {
+    storage.set("cartoons", cartoons);
+  }, [cartoons]);
 
   const handleChange = (userSearch) => {
     if (userSearch.key === "name") {
@@ -29,7 +41,16 @@ const App = (props) => {
   const listRender = () => {
     if (filteredCartoon.length === 0) {
       return (
-        <p> Upss! Parece que no existe este personaje, intenta de nuevo </p>
+        <>
+          <p>
+            {`Upss! Parece que `}
+            <strong>{cartoonFilter}</strong>
+            {` no existe, intenta con otro personaje`}
+          </p>
+          <a className="cartoon-link link-position" href="/">
+            ← Volver
+          </a>
+        </>
       );
     } else {
       return <CartoonList cartoons={filteredCartoon} />;
