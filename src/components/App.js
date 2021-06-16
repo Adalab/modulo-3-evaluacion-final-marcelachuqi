@@ -37,7 +37,7 @@ const App = (props) => {
   };
 
   const renderCartoonDetail = (props) => {
-    const RouteCartoonId = props.match.params.cartoonId;
+    const RouteCartoonId = parseInt(props.match.params.cartoonId);
     const findCartoon = cartoons.find((cartoon) => {
       return cartoon.id === RouteCartoonId;
     });
