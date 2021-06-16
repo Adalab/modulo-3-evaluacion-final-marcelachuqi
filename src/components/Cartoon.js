@@ -3,9 +3,9 @@ import React from "react";
 const Cartoon = (props) => {
   return (
     <li>
-      <img src="" alt="" />
-      <h1> Nombre: {props.cartoon.name} </h1>
-      <p>Especie: {props.cartoon.species}</p>
+      <img src={props.cartoon.image} alt={props.cartoon.name} />
+      <h1> {props.cartoon.name} </h1>
+      <p> {props.cartoon.species}</p>
     </li>
   );
 };
