@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Route, Switch } from "react-router-dom";
+import "../stylesheets/style.css";
 import getDataFromApi from "../services/api";
 import CartoonList from "./CartoonList";
 import Filter from "./Filter";
+import CartoonDetail from "./CartoonDetail";
 
 const App = (props) => {
   const [cartoons, setCartoons] = useState([]);
@@ -14,21 +17,34 @@ const App = (props) => {
   }, []);
 
   const handleChange = (userSearch) => {
-    console.log(userSearch);
     if (userSearch.key === "name") {
       setCartoonFilter(userSearch.value);
     }
   };
-  console.log("name:", cartoonFilter);
 
   const filteredCartoon = cartoons.filter((cartoon) => {
     return cartoon.name.toUpperCase().includes(cartoonFilter.toUpperCase());
   });
 
+  const listRender = () => {
+    if (filteredCartoon.length === 0) {
+      return <p> Parece que no existe, intenta de nuevo</p>;
+    } else {
+      return <CartoonList cartoons={filteredCartoon} />;
+    }
+  };
+
   return (
     <>
-      <Filter handleChange={handleChange} />
-      <CartoonList cartoons={filteredCartoon} />
+      <Switch>
+        <Route exact path="/" component={App}>
+          <Filter handleChange={handleChange} />
+          {listRender()}
+        </Route>
+        <Route exact path="/cartoondetail/:id">
+          <CartoonDetail />
+        </Route>
+      </Switch>
     </>
   );
 };

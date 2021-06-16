@@ -10,6 +10,9 @@ const getDataFromApi = () => {
           species: cartoon.species,
           image: cartoon.image,
           id: cartoon.id,
+          planet: cartoon.location.name,
+          episodes: cartoon.episode.length,
+          status: cartoon.status,
         };
       });
       return cleanData;

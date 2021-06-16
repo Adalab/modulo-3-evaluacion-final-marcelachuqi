@@ -7,7 +7,7 @@ const CartoonList = (props) => {
   });
   return (
     <section>
-      <ul>{cartoonElements}</ul>
+      <ul className="cartoon-list">{cartoonElements}</ul>
     </section>
   );
 };
