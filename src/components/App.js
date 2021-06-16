@@ -28,9 +28,23 @@ const App = (props) => {
 
   const listRender = () => {
     if (filteredCartoon.length === 0) {
-      return <p> Parece que no existe, intenta de nuevo</p>;
+      return (
+        <p> Upss! Parece que no existe este personaje, intenta de nuevo </p>
+      );
     } else {
       return <CartoonList cartoons={filteredCartoon} />;
+    }
+  };
+
+  const renderCartoonDetail = (props) => {
+    const RouteCartoonId = props.match.params.cartoonId;
+    const findCartoon = cartoons.find((cartoon) => {
+      return cartoon.id === RouteCartoonId;
+    });
+    if (findCartoon !== undefined) {
+      return <CartoonDetail cartoon={findCartoon} />;
+    } else {
+      <p> NOT FOUND </p>;
     }
   };
 
@@ -41,9 +55,7 @@ const App = (props) => {
           <Filter handleChange={handleChange} />
           {listRender()}
         </Route>
-        <Route exact path="/cartoondetail/:id">
-          <CartoonDetail />
-        </Route>
+        <Route path="/cartoon/:cartoonId" render={renderCartoonDetail} />
       </Switch>
     </>
   );

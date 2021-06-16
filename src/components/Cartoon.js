@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Cartoon = (props) => {
   return (
-    <Link to="/CartoonDetail">
+    <Link to={`/cartoon/${props.cartoon.id}`}>
       <li>
         <img src={props.cartoon.image} alt={props.cartoon.name} />
         <h1> {props.cartoon.name} </h1>
