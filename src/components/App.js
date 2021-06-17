@@ -7,14 +7,13 @@ import Filter from "./Filter";
 import CartoonDetail from "./CartoonDetail";
 import storage from "../services/local-storage";
 import logo from "../image/goback.png";
+import NotFound from "./NotFound";
 
 const App = (props) => {
   const [cartoons, setCartoons] = useState(storage.get("cartoons", []));
   const [cartoonFilter, setCartoonFilter] = useState(
-    storage.get("cartoonFilter", "")
+    storage.get("cartoonFilter", " ")
   );
-
-  console.log(cartoonFilter);
 
   useEffect(() => {
     if (cartoons.length === 0) {
@@ -43,6 +42,10 @@ const App = (props) => {
     return cartoon.name.toUpperCase().includes(cartoonFilter.toUpperCase());
   });
 
+  const handleReset = () => {
+    setCartoonFilter("");
+  };
+
   const listRender = () => {
     if (filteredCartoon.length === 0) {
       return (
@@ -52,9 +55,16 @@ const App = (props) => {
             <strong>{cartoonFilter}</strong>
             {`" no existe, intenta con otro personaje`}
           </p>
-          <a href="/">
-            <img className="go-back-img" src={logo} alt="goback" />
-          </a>
+
+          <img
+            onClick={handleReset}
+            className="go-back-img"
+            src={logo}
+            alt="goback"
+          />
+          <p onClick={handleReset} className="cartoon-link-goback">
+            ←go Back!
+          </p>
         </>
       );
     } else {
@@ -69,8 +79,6 @@ const App = (props) => {
     });
     if (findCartoon !== undefined) {
       return <CartoonDetail cartoon={findCartoon} />;
-    } else {
-      <p> NOT FOUND </p>;
     }
   };
 
@@ -82,6 +90,9 @@ const App = (props) => {
           {listRender()}
         </Route>
         <Route path="/cartoon/:cartoonId" render={renderCartoonDetail} />
+        <Route>
+          <NotFound />
+        </Route>
       </Switch>
     </>
   );

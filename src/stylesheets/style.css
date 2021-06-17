@@ -1,11 +1,11 @@
 body {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   text-align: center;
+  justify-content: center;
   color: turquoise;
-  font-family: sans-serif;
-  font-size: large;
   background-color: rgb(34, 33, 33);
+  font-family: sans-serif;
 }
 
 .logo {
@@ -19,30 +19,27 @@ body {
   position: relative;
   margin-top: 150px;
   width: 300px;
-  height: 28px;
+  height: 20px;
   border: solid 2px turquoise;
   border-radius: 15px;
+  padding: 6px;
 }
 .cartoon-list {
-  width: 70%;
   margin-top: 50px;
   list-style-type: none;
   display: grid;
-  gap: 20px;
+  gap: 2.5rem;
   grid-template-columns: repeat(4, 1fr);
 }
 .cartoon-detail {
   background-color: #6ee3dd;
-  width: 900px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 100px;
-  margin-left: 16rem;
+  margin: 200px;
   color: white;
   border-radius: 20px;
-  margin-top: 25vh;
 }
 
 .cartoon-detail-list {
@@ -64,27 +61,38 @@ body {
   margin-left: 25rem;
 }
 
+.cartoon-link-goback {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  color: rgb(36, 35, 35);
+  font-size: 20px;
+  margin-top: -100px;
+  text-align: center;
+  width: 95%;
+  cursor: pointer;
+}
+.link-router {
+  text-decoration: none;
+}
+
 .cartoon-link:link {
   margin-right: 20px;
   outline: none;
   text-decoration: none;
-
   color: turquoise;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 20px;
+  text-decoration: none;
 }
 
 .cartoon-link:visited {
   color: turquoise;
-}
-
-.cartoon-link:focus {
+  text-decoration: none;
 }
 
 .go-back-img {
-  width: 250px;
-}
-
-.cartoon-list-each {
-  width: 18rem;
+  width: 300px;
+  padding: 40px;
+  cursor: pointer;
 }
 
 .cartoon-info {
@@ -95,10 +103,16 @@ body {
   text-align: left;
   padding: 10px;
   margin-top: -12px;
-  width: 270px;
+  width: 250px;
+  border-radius: 10px;
 }
 
 .cartoon-img {
-  width: 290px;
+  width: 250px;
+  box-shadow: 5px 5px 5px rgb(53, 52, 52);
   border-radius: 10px;
+}
+.not-found-img {
+  margin-top: 5rem;
+  height: 500px;
 }

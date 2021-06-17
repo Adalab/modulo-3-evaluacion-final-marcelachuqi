@@ -19,6 +19,7 @@ const Filter = (props) => {
         type="text"
         onChange={handleFilter}
         value={props.cartoonFilter}
+        placeholder="Search a character"
       />
     </form>
   );

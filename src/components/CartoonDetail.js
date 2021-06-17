@@ -28,7 +28,6 @@ const CartoonDetail = (props) => {
             {props.cartoon.planet}
           </li>
           <li>
-            {" "}
             <strong>Episodes:</strong> {props.cartoon.episodes}
           </li>
         </ul>
