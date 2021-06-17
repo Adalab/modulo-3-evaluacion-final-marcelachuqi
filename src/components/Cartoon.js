@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 
 const Cartoon = (props) => {
   return (
@@ -18,10 +17,6 @@ const Cartoon = (props) => {
       </li>
     </Link>
   );
-};
-
-Cartoon.propTypes = {
-  label: PropTypes.string,
 };
 
 export default Cartoon;
