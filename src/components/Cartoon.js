@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 const Cartoon = (props) => {
   return (
@@ -10,11 +11,17 @@ const Cartoon = (props) => {
           src={props.cartoon.image}
           alt={props.cartoon.name}
         />
-        <h1> {props.cartoon.name} </h1>
-        <p> {props.cartoon.species}</p>
+        <div className="cartoon-info">
+          <h1> {props.cartoon.name} </h1>
+          <p> {props.cartoon.species}</p>
+        </div>
       </li>
     </Link>
   );
+};
+
+Cartoon.propTypes = {
+  label: PropTypes.string,
 };
 
 export default Cartoon;

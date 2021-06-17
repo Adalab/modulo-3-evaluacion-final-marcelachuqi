@@ -1,7 +1,6 @@
 body {
   display: flex;
   flex-direction: column;
-
   text-align: center;
   color: turquoise;
   font-family: sans-serif;
@@ -27,9 +26,7 @@ body {
 .cartoon-list {
   width: 70%;
   margin-top: 50px;
-  color: blanchedalmond;
   list-style-type: none;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(4, 1fr);
@@ -80,19 +77,28 @@ body {
 }
 
 .cartoon-link:focus {
-  border-bottom: 1px solid;
-  background: white;
-  opacity: 1;
 }
 
 .go-back-img {
   width: 250px;
 }
 
-.cartoon-img {
-  border-radius: 20px;
-  margin: 10px;
-}
 .cartoon-list-each {
   width: 18rem;
+}
+
+.cartoon-info {
+  background-color: rgb(5, 165, 165);
+  color: white;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 12px;
+  text-align: left;
+  padding: 10px;
+  margin-top: -12px;
+  width: 270px;
+}
+
+.cartoon-img {
+  width: 290px;
+  border-radius: 10px;
 }

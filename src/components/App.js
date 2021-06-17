@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import "../stylesheets/style.css";
 import getDataFromApi from "../services/api";
 import CartoonList from "./CartoonList";
@@ -28,6 +28,11 @@ const App = (props) => {
     storage.set("cartoons", cartoons);
   }, [cartoons]);
 
+  useEffect(() => {
+    storage.set("cartoons", cartoons);
+    storage.set("cartoonFilter", cartoonFilter);
+  }, [cartoons, cartoonFilter]);
+
   const handleChange = (userSearch) => {
     if (userSearch.key === "name") {
       setCartoonFilter(userSearch.value);
@@ -43,12 +48,12 @@ const App = (props) => {
       return (
         <>
           <p>
-            {`Upss! Parece que `}
+            {`Upss! Parece que "`}
             <strong>{cartoonFilter}</strong>
-            {` no existe, intenta con otro personaje`}
+            {`" no existe, intenta con otro personaje`}
           </p>
-          <a className="cartoon-link link-position" href="/">
-            ← Volver
+          <a href="/">
+            <img className="go-back-img" src={logo} alt="goback" />
           </a>
         </>
       );
@@ -73,7 +78,7 @@ const App = (props) => {
     <>
       <Switch>
         <Route exact path="/" component={App}>
-          <Filter handleChange={handleChange} />
+          <Filter cartoonFilter={cartoonFilter} handleChange={handleChange} />
           {listRender()}
         </Route>
         <Route path="/cartoon/:cartoonId" render={renderCartoonDetail} />

@@ -1,5 +1,6 @@
 import React from "react";
 import Logo from "../image/Logo.png";
+import PropTypes from "prop-types";
 
 const Filter = (props) => {
   const handleFilter = (ev) => {
@@ -17,9 +18,12 @@ const Filter = (props) => {
         name="name"
         type="text"
         onChange={handleFilter}
+        value={props.cartoonFilter}
       />
     </form>
   );
 };
-
+Filter.propTypes = {
+  cartoonFilter: PropTypes.string,
+};
 export default Filter;
