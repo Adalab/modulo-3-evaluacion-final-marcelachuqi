@@ -1,15 +1,12 @@
 import React from "react";
 import Logo from "../image/Logo.png";
 import PropTypes from "prop-types";
-import FilterbyStatus from "./Filter";
+import FilterbyStatus from "./FilterbyStatus";
 
 const Filter = (props) => {
   const handleFilter = (ev) => {
     ev.preventDefault();
-    props.handleChange({
-      value: ev.target.value,
-      key: "name",
-    });
+    props.handleChange({ value: ev.target.value, key: "name" });
   };
 
   return (
@@ -25,7 +22,7 @@ const Filter = (props) => {
         value={props.cartoonFilter}
         placeholder="Search a character"
       />
-      <FilterbyStatus />
+      <FilterbyStatus handleChange={props.handleChange} />
     </form>
   );
 };

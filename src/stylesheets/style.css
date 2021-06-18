@@ -26,15 +26,12 @@ body {
 }
 
 .selector {
-  margin-top: 150px;
   width: 100px;
   height: 30px;
-  border: rgb(36, 35, 35) solid 2px;
-  margin: 20px;
-  background-color: rgb(43, 41, 41);
+  border: solid 2px rgb(38, 40, 37);
+  background-color: rgb(38, 40, 37);
   color: white;
-  font-size: large;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  margin: 20px;
 }
 
 .cartoon-list {

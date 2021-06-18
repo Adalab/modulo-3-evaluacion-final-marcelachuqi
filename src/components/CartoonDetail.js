@@ -13,7 +13,7 @@ const CartoonDetail = (props) => {
         <img
           className="cartoon-detail-img"
           src={props.cartoon.image}
-          alt={props.cartoon.name}
+          atl={props.cartoon.name}
         />
         <h1>{props.cartoon.name}</h1>
         <ul className="cartoon-detail-list">
