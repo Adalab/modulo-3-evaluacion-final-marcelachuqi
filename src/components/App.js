@@ -12,7 +12,7 @@ import NotFound from "./NotFound";
 const App = (props) => {
   const [cartoons, setCartoons] = useState(storage.get("cartoons", []));
   const [cartoonFilter, setCartoonFilter] = useState(
-    storage.get("cartoonFilter", " ")
+    storage.get("cartoonFilter", "")
   );
 
   useEffect(() => {
