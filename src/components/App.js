@@ -109,7 +109,11 @@ const App = (props) => {
     <>
       <Switch>
         <Route exact path="/" component={App}>
-          <Filter cartoonFilter={cartoonFilter} handleChange={handleChange} />
+          <Filter
+            cartoonStatus={cartoonStatus}
+            cartoonFilter={cartoonFilter}
+            handleChange={handleChange}
+          />
           {listRender()}
         </Route>
         <Route path="/cartoon/:cartoonId" render={renderCartoonDetail} />
