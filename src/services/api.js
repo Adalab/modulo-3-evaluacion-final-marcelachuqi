@@ -1,5 +1,5 @@
 const getDataFromApi = () => {
-  return fetch("https://rickandmortyapi.com/documentation/#get-all-characters")
+  return fetch("http://rickandmortyapi.com/documentation/#get-all-characters")
     .then((response) => response.json())
     .then((data) => {
       const cleanData = data.results.map((cartoon) => {
