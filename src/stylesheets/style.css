@@ -24,6 +24,19 @@ body {
   border-radius: 15px;
   padding: 6px;
 }
+
+.selector {
+  margin-top: 150px;
+  width: 100px;
+  height: 30px;
+  border: rgb(36, 35, 35) solid 2px;
+  margin: 20px;
+  background-color: rgb(43, 41, 41);
+  color: white;
+  font-size: large;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
 .cartoon-list {
   margin-top: 50px;
   list-style-type: none;

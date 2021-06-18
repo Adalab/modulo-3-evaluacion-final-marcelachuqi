@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import "../stylesheets/style.css";
 import getDataFromApi from "../services/api";
+import storage from "../services/local-storage";
 import CartoonList from "./CartoonList";
 import Filter from "./Filter";
 import CartoonDetail from "./CartoonDetail";
-import storage from "../services/local-storage";
 import logo from "../image/goback.png";
 import NotFound from "./NotFound";
 
@@ -14,6 +14,9 @@ const App = (props) => {
   const [cartoonFilter, setCartoonFilter] = useState(
     storage.get("cartoonFilter", "")
   );
+  const [cartoonStatus, setCartoonStatus] = useState(
+    storage.get("cartoonStatus", "all")
+  );
 
   useEffect(() => {
     if (cartoons.length === 0) {
@@ -21,7 +24,7 @@ const App = (props) => {
         setCartoons(cartoon);
       });
     }
-  }, []);
+  });
 
   useEffect(() => {
     storage.set("cartoons", cartoons);
@@ -32,22 +35,38 @@ const App = (props) => {
     storage.set("cartoonFilter", cartoonFilter);
   }, [cartoons, cartoonFilter]);
 
+  useEffect(() => {
+    storage.set("cartoons", cartoons);
+    storage.set("cartoonStatus", cartoonStatus);
+  }, [cartoons, cartoonStatus]);
+
   const handleChange = (userSearch) => {
     if (userSearch.key === "name") {
       setCartoonFilter(userSearch.value);
+    } else if (userSearch.key === "status") {
+      setCartoonStatus(userSearch.value);
     }
   };
 
-  const filteredCartoon = cartoons.filter((cartoon) => {
-    return cartoon.name.toUpperCase().includes(cartoonFilter.toUpperCase());
-  });
+  const filteredCartoon = cartoons
+    .filter((cartoon) => {
+      return cartoon.name.toUpperCase().includes(cartoonFilter.toUpperCase());
+    })
+    .filter((cartoon) => {
+      if (cartoonStatus === "all") {
+        return true;
+      } else {
+        return cartoon.status === cartoonStatus;
+      }
+    });
 
   const handleReset = () => {
     setCartoonFilter("");
+    setCartoonStatus("all");
   };
 
   const listRender = () => {
-    if (filteredCartoon.length === 0) {
+    if (filteredCartoon.length === undefined) {
       return (
         <>
           <p>
@@ -68,7 +87,11 @@ const App = (props) => {
         </>
       );
     } else {
-      return <CartoonList cartoons={filteredCartoon} />;
+      return (
+        <>
+          <CartoonList cartoons={filteredCartoon} />
+        </>
+      );
     }
   };
 
