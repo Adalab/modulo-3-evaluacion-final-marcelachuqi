@@ -1,5 +1,7 @@
 const getDataFromApi = () => {
-  return fetch("http://rickandmortyapi.com/documentation/#get-all-characters")
+  return fetch(
+    "https://raw.githubusercontent.com/Adalab/rick-y-morty/master/data/rick-y-morty.json"
+  )
     .then((response) => response.json())
     .then((data) => {
       const cleanData = data.results.map((cartoon) => {
@@ -11,6 +13,7 @@ const getDataFromApi = () => {
           planet: cartoon.location.name,
           episodes: cartoon.episode.length,
           status: cartoon.status,
+          gender: cartoon.gender,
         };
       });
       return cleanData;

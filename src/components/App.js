@@ -14,9 +14,8 @@ const App = (props) => {
   const [cartoonFilter, setCartoonFilter] = useState(
     storage.get("cartoonFilter", "")
   );
-  // const [cartoonStatus, setCartoonStatus] = useState(
-  //   storage.get("cartoonStatus", "all")
-  // );
+  const [cartoonStatus, setCartoonStatus] = useState("all");
+  const [cartoonGender, setCartoonGender] = useState("all");
 
   useEffect(() => {
     if (cartoons.length === 0) {
@@ -31,19 +30,46 @@ const App = (props) => {
   }, [cartoons]);
 
   useEffect(() => {
-    storage.set("cartoons", cartoons);
     storage.set("cartoonFilter", cartoonFilter);
-  }, [cartoons, cartoonFilter]);
+  }, [cartoonFilter]);
+
+  // useEffect(() => {
+  //   setCartoonGender(cartoonGender);
+  // }, [cartoonGender]);
+
+  // useEffect(() => {
+  //   setCartoonStatus(cartoonStatus);
+  // }, [cartoonStatus]);
 
   const handleChange = (userSearch) => {
     if (userSearch.key === "name") {
       setCartoonFilter(userSearch.value);
+    } else if (userSearch.key === "gender") {
+      setCartoonGender(userSearch.value);
+    } else if (userSearch.key === "status") {
+      setCartoonStatus(userSearch.value);
     }
   };
 
-  const filteredCartoon = cartoons.filter((cartoon) => {
-    return cartoon.name.toUpperCase().includes(cartoonFilter.toUpperCase());
-  });
+  const filteredCartoon = cartoons
+    .filter((cartoon) => {
+      return cartoon.name.toUpperCase().includes(cartoonFilter.toUpperCase());
+    })
+    .filter((cartoon) => {
+      if (cartoonGender === "all") {
+        return true;
+      } else {
+        return cartoon.gender === cartoonGender;
+      }
+    })
+    .filter((cartoon) => {
+      if (cartoonStatus === "all") {
+        return true;
+      } else {
+        return cartoon.status === cartoonStatus;
+      }
+    });
+  console.log(filteredCartoon);
 
   const handleReset = () => {
     setCartoonFilter("");

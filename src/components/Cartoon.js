@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Cartoon = (props) => {
+  console.log(props);
   return (
     <Link className="cartoon-link" to={`/cartoon/${props.cartoon.id}`}>
       <li className="cartoon-list-each">
@@ -13,6 +14,7 @@ const Cartoon = (props) => {
           />
           <h1> {props.cartoon.name} </h1>
           <p> {props.cartoon.species}</p>
+          <p>{props.cartoon.gender}</p>
         </div>
       </li>
     </Link>

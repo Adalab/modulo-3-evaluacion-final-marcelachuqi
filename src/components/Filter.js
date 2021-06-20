@@ -1,12 +1,13 @@
 import React from "react";
 import Logo from "../image/Logo.png";
 import PropTypes from "prop-types";
-import FilterbyStatus from "./FilterbyStatus";
+import FilterbyGender from "./FilterbyGender";
 
 const Filter = (props) => {
+  console.log(props);
   const handleFilter = (ev) => {
     ev.preventDefault();
-    props.handleChange({ value: ev.target.value, key: "name" });
+    props.handleChange({ value: ev.target.value, key: ev.target.id });
   };
 
   return (
@@ -15,6 +16,7 @@ const Filter = (props) => {
         <img className="logo" src={Logo} alt="logo" />
       </label>
       <input
+        id="name"
         className="filter"
         name="name"
         type="text"
@@ -22,7 +24,20 @@ const Filter = (props) => {
         value={props.cartoonFilter}
         placeholder="Search a character"
       />
-      <FilterbyStatus handleChange={props.handleChange} />
+
+      <select
+        name="status"
+        id="status"
+        className="selector"
+        onClick={handleFilter}
+      >
+        <option value="all">All</option>
+        <option value="Alive">Alive</option>
+        <option value="Dead">Dead</option>
+        <option value="unknown">Unknown</option>
+      </select>
+
+      <FilterbyGender handleChange={props.handleChange} />
     </form>
   );
 };
