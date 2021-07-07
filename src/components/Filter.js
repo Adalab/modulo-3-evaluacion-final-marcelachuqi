@@ -13,7 +13,9 @@ const Filter = (props) => {
   return (
     <form className="form">
       <label htmlFor="name">
-        <img className="logo" src={Logo} alt="logo" />
+        <a className="logo" href="#">
+          <img className="logo" src={Logo} alt="logo" />{" "}
+        </a>
       </label>
       <input
         id="name"

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../image/Logo.png";
+import video from "../video/Plexus_Background_Loop.mp4";
 
 const CartoonDetail = (props) => {
   return (
@@ -8,6 +8,9 @@ const CartoonDetail = (props) => {
       <Link className="cartoon-link link-position" to="/">
         ← Volver
       </Link>
+      <video className="video-background" autoPlay loop>
+        <source src={video}></source>
+      </video>
       <div className="cartoon-detail">
         <img
           className="cartoon-detail-img"
