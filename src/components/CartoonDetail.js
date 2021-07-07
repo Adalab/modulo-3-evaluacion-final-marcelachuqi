@@ -9,13 +9,12 @@ const CartoonDetail = (props) => {
         ← Volver
       </Link>
       <div className="cartoon-detail">
-        <img className="logo" src={Logo} alt="logo" />
         <img
           className="cartoon-detail-img"
           src={props.cartoon.image}
           atl={props.cartoon.name}
         />
-        <h1>{props.cartoon.name}</h1>
+        <h1 className="cartoon-detail-name">{props.cartoon.name}</h1>
         <ul className="cartoon-detail-list">
           <li>
             <strong>Status:</strong> {props.cartoon.status}

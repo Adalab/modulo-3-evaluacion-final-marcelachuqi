@@ -13,7 +13,7 @@ const FilterbyGender = (props) => {
       id="gender"
       className="selector"
     >
-      <option value="all">All</option>
+      <option value="all">Genre</option>
       <option value="Male">Male</option>
       <option value="Female">Female</option>
       <option value="unknown">Unknown</option>

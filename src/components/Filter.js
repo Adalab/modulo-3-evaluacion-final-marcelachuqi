@@ -31,7 +31,7 @@ const Filter = (props) => {
         className="selector"
         onClick={handleFilter}
       >
-        <option value="all">All</option>
+        <option value="all">Status</option>
         <option value="Alive">Alive</option>
         <option value="Dead">Dead</option>
         <option value="unknown">Unknown</option>
